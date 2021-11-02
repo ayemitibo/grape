@@ -38,7 +38,7 @@ export default {
   props: ["slides"],
   methods: {
     startRotation: function () {
-      // this.timer = setInterval(this.next, this.speed);
+      this.timer = setInterval(this.next, this.speed);
     },
     stopRotation: function () {
       clearTimeout(this.timer);
