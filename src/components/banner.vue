@@ -2,13 +2,23 @@
   <section class="banner">
     <div class="w-full">
       <template v-for="(slide, index) in slides" :key="index">
-        <div class="w-full flex banner_container" v-if="isActive(index)">
-          <div class="w-1/5 flex flex-col justify-center">
+        <div
+          class="w-full flex banner_container items-center"
+          v-if="isActive(index)"
+        >
+          <div class="flex flex-col justify-center w-1/3">
             <h1 class="font-bold text-5xl">{{ slide.title }}</h1>
-            <p class="text-lg mt-10">{{ slide.description }}</p>
+            <p class="text-zxl mt-10">{{ slide.description }}</p>
           </div>
-          <div class="w-3/5">
-            <img :src="slide.image" v-if="isActive(index)" class="w-full" />
+          <div class="w-1/2">
+            <div class="w-full object-cover" :style="{ height: '400px' }">
+              <img
+                :src="slide.image"
+                v-if="isActive(index)"
+                class="h-full object-cover"
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </template>
@@ -17,6 +27,7 @@
 </template>
 <script>
 export default {
+  inheritAttrs: false,
   data: function () {
     return {
       current: 0,
@@ -27,7 +38,7 @@ export default {
   props: ["slides"],
   methods: {
     startRotation: function () {
-      this.timer = setInterval(this.next, this.speed);
+      // this.timer = setInterval(this.next, this.speed);
     },
     stopRotation: function () {
       clearTimeout(this.timer);
@@ -68,8 +79,8 @@ export default {
 </script>
 <style scoped>
 .slideshow__container {
-  overflow: hidden;
-  position: relative;
+  /* overflow: hidden; */
+  /* position: relative; */
 
   padding-top: calc(9 / 16 * 100%);
 
@@ -83,6 +94,7 @@ export default {
 
 .banner_container {
   height: calc(100vh - 40px);
+  /* pointer-events: none; */
   @apply justify-between;
 }
 

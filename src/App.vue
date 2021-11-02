@@ -4,7 +4,6 @@
     <div v-else>
       <!-- header begins -->
       <base-header> </base-header>
-      <!-- header ends -->
       <div class="body">
         <!-- banner begins -->
         <base-banner :slides="data" />
@@ -14,13 +13,24 @@
         <section class="product">
           <h3 class="section-title">ALL PRODUCT</h3>
           <div class="container section-body">
-            <template
-              class="flex w-full"
-              v-for="(item, index) in data"
-              :key="index"
+            <div
+              class="
+                mt-6
+                grid grid-cols-1
+                gap-y-10 gap-x-6
+                sm:grid-cols-2
+                lg:grid-cols-4
+                xl:gap-x-8
+              "
             >
-              <base-product-card :item="item" />
-            </template>
+              <template
+                class="flex w-full"
+                v-for="(item, index) in data"
+                :key="index"
+              >
+                <base-product-card :item="item" @showModal="showModal" />
+              </template>
+            </div>
           </div>
         </section>
 
@@ -93,6 +103,9 @@
           </div>
         </footer>
         <!-- footer ends  -->
+
+        <!-- modal -->
+        <base-popover ref="modal" />
       </div>
     </div>
   </div>
@@ -111,6 +124,11 @@ export default {
       data: [],
       loading: false,
     };
+  },
+  methods: {
+    showModal(item) {
+      this.$refs.modal.show(item);
+    },
   },
   mounted() {
     this.loading = true;

@@ -1,22 +1,32 @@
 <template>
-  <div class="lds-grid">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+  <div class="loader-component">
+    <div class="lds-grid">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </div>
 </template>
 <style scoped>
+.loader-component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
 .lds-grid {
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .lds-grid div {
   position: absolute;
@@ -25,6 +35,7 @@
   border-radius: 50%;
   background: #fff;
   animation: lds-grid 1.2s linear infinite;
+  background: red;
 }
 .lds-grid div:nth-child(1) {
   top: 8px;
