@@ -100,7 +100,7 @@ export default {
 
 img {
   display: block;
-  object-fit: fill;
+  object-fit: contain;
   opacity: 1;
   transition: opacity 1s;
   @apply w-full h-full;
