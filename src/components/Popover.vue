@@ -81,8 +81,9 @@
               </div>
               <div class="item-content">
                 <div class="content-desc">
-                  {{ product.title }}
+                  <h1>{{ product.title }}</h1>
                 </div>
+                <p class="text-sm content-desc">{{ product.description }}</p>
                 <div class="content-price">${{ product.price }}</div>
               </div>
             </div>
